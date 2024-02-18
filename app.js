@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
 })
 
 app.post("/book", upload.single("image"), (req, res) => {
-
+  const fileName = req.file.filename
   const { bookName, bookPrice, isbnNumber, authorName, publishedAt, publication } = req.body
   Book.create({
     bookName,
@@ -36,7 +36,8 @@ app.post("/book", upload.single("image"), (req, res) => {
     isbnNumber,
     authorName,
     publishedAt,
-    publication
+    publication,
+    imageUrl: fileName
   })
 
   res.status(201).json({
@@ -88,6 +89,8 @@ app.patch("/book/:id", async (req, res) => {
     message: "Book Updated Successfully"
   })
 })
+
+app.use(express.static("./Storage/"))
 
 app.listen(3000, () => {
   console.log("Nodejs server has been started at port 3000")
