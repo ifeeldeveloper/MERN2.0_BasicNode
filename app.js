@@ -32,7 +32,7 @@ app.post("/book", upload.single("image"), (req, res) => {
   if (!req.file) {
     fileName = "https://imgs.search.brave.com/MYZ5wRA1blI9PpRYQlguuzBnvTbLBft6gzTK5FkrKSE/rs:fit:860:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAzLzAxLzE1LzIz/LzM2MF9GXzMwMTE1/MjMwOF9nR2NXSUl1/aTZzVWpyTTVpR1pK/SUh5cEMxcUhHajBY/Ry5qcGc"
   } else {
-    fileName = req.file.filename
+    fileName = "localhost:3000/" + req.file.filename
   }
   const { bookName, bookPrice, isbnNumber, authorName, publishedAt, publication } = req.body
   Book.create({
