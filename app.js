@@ -13,7 +13,7 @@ const Book = require("./Model/bookModel")
 const { multer, storage } = require("./Middleware/multerConfig")
 const upload = multer({ storage: storage })
 
-/* Alternative of line 13 and 14
+/* Alternative of line 13
 const multer = require("./Middleware/multerConfig").multer
 const storage = require(".Middleware/multerConfig").storage
 */
